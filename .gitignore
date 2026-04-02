@@ -1,0 +1,6 @@
+.env
+.admin_auth.json
+.security_data.json
+.discord_forms_server.pid
+.discord_forms_server.log
+__pycache__/

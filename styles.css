@@ -1,0 +1,3329 @@
+:root {
+  --bg: #1e1f22;
+  --panel: #2b2d31;
+  --panel-2: #313338;
+  --line: #3f4147;
+  --text: #f2f3f5;
+  --muted: #b5bac1;
+  --brand: #5865f2;
+  --brand-2: #7983f5;
+  --green: #23a559;
+  --danger: #da373c;
+  --input: #1f2124;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-windows-xp-pdf {
+  --bg: #3f79c4;
+  --panel: #ece9d8;
+  --panel-2: #f3f1e6;
+  --line: #7f9db9;
+  --text: #1f2a3b;
+  --muted: #42556f;
+  --brand: #245edc;
+  --brand-2: #4b7ff0;
+  --input: #ffffff;
+  --shadow: 0 10px 30px rgba(8, 31, 73, 0.25);
+}
+
+body.theme-windows-98-pdf {
+  --bg: #008080;
+  --panel: #c0c0c0;
+  --panel-2: #d4d0c8;
+  --line: #808080;
+  --text: #111111;
+  --muted: #303030;
+  --brand: #000080;
+  --brand-2: #0b3fb3;
+  --input: #ffffff;
+  --shadow: 6px 6px 0 rgba(0, 0, 0, 0.28);
+}
+
+body.theme-wizard-exe-setup {
+  --bg: #0c2851;
+  --panel: #eef3fb;
+  --panel-2: #dbe6f6;
+  --line: #8da4c7;
+  --text: #1a2840;
+  --muted: #4b5f7f;
+  --brand: #1f62d1;
+  --brand-2: #5d91ea;
+  --input: #ffffff;
+  --shadow: 0 18px 40px rgba(7, 25, 58, 0.28);
+}
+
+body.theme-windows-wizard-setup {
+  --bg: #06224f;
+  --panel: #f8fbff;
+  --panel-2: #dce9f9;
+  --line: #8ca7ca;
+  --text: #173055;
+  --muted: #59708f;
+  --brand: #1d62da;
+  --brand-2: #62a3ff;
+  --input: #ffffff;
+  --shadow: 0 24px 60px rgba(3, 18, 49, 0.34);
+}
+
+body.theme-wii-u-menu {
+  --bg: #dff7ff;
+  --panel: #ffffff;
+  --panel-2: #edf8ff;
+  --line: #b7ddea;
+  --text: #17334a;
+  --muted: #5c7e95;
+  --brand: #10a8e2;
+  --brand-2: #71d9ff;
+  --input: #ffffff;
+  --shadow: 0 20px 50px rgba(29, 96, 126, 0.18);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); font-family: "Trebuchet MS", "Segoe UI", sans-serif; }
+button, input, textarea, select { font: inherit; }
+a { color: inherit; }
+
+body.theme-windows-xp-pdf {
+  font-family: Tahoma, "Trebuchet MS", sans-serif;
+}
+
+body.theme-windows-98-pdf {
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+}
+
+body.theme-wizard-exe-setup {
+  font-family: Tahoma, "Trebuchet MS", sans-serif;
+}
+
+body.theme-windows-wizard-setup {
+  font-family: Tahoma, "Segoe UI", sans-serif;
+}
+
+body.theme-wii-u-menu {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background:
+    radial-gradient(circle at top left, rgba(88, 101, 242, 0.18), transparent 28%),
+    linear-gradient(180deg, #1e1f22, #17181a 70%);
+}
+
+body.theme-windows-xp-pdf .shell {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent 160px),
+    linear-gradient(180deg, #5c93d6 0%, #3d78bf 48%, #255fab 100%);
+}
+
+body.theme-windows-98-pdf .shell {
+  background: #008080;
+}
+
+body.theme-wizard-exe-setup .shell {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 24%),
+    linear-gradient(135deg, #1f4d86 0%, #14365f 42%, #0b2140 100%);
+}
+
+body.theme-windows-wizard-setup .shell {
+  grid-template-columns: 280px 1fr;
+  background:
+    linear-gradient(90deg, rgba(4, 24, 58, 0.92) 0, rgba(4, 24, 58, 0.92) 280px, transparent 280px),
+    radial-gradient(circle at 85% 20%, rgba(118, 180, 255, 0.3), transparent 18%),
+    linear-gradient(180deg, #0b3c86 0%, #0b2b63 50%, #061c42 100%);
+}
+
+body.theme-wii-u-menu .shell {
+  grid-template-columns: 1fr;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.95), transparent 26%),
+    linear-gradient(180deg, #dff7ff 0%, #c7efff 46%, #eafcff 100%);
+}
+
+body.standalone-form .shell {
+  display: block;
+  background:
+    radial-gradient(circle at top, rgba(88, 101, 242, 0.18), transparent 24%),
+    linear-gradient(180deg, #1e1f22, #17181a 70%);
+}
+
+body.theme-windows-xp-pdf.standalone-form .shell {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent 160px),
+    linear-gradient(180deg, #5c93d6 0%, #3d78bf 48%, #255fab 100%);
+}
+
+body.theme-windows-98-pdf.standalone-form .shell {
+  background: #008080;
+}
+
+body.theme-wizard-exe-setup.standalone-form .shell {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 24%),
+    linear-gradient(135deg, #1f4d86 0%, #14365f 42%, #0b2140 100%);
+}
+
+body.theme-windows-wizard-setup.standalone-form .shell {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(118, 180, 255, 0.3), transparent 18%),
+    linear-gradient(180deg, #0b3c86 0%, #0b2b63 50%, #061c42 100%);
+}
+
+body.theme-wii-u-menu.standalone-form .shell {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.95), transparent 26%),
+    linear-gradient(180deg, #dff7ff 0%, #c7efff 46%, #eafcff 100%);
+}
+
+body.logged-out .shell {
+  display: block;
+  background:
+    radial-gradient(circle at top, rgba(88, 101, 242, 0.18), transparent 24%),
+    linear-gradient(180deg, #1e1f22, #17181a 70%);
+}
+
+body.logged-out .sidebar {
+  display: none;
+}
+
+body.logged-out .main-panel {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 18px 48px;
+}
+
+body.standalone-form .sidebar,
+body.standalone-form .topbar {
+  display: none;
+}
+
+body.standalone-form .main-panel {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 18px 48px;
+}
+
+body.standalone-form .page-content {
+  gap: 16px;
+}
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  padding: 18px;
+  background: rgba(25, 26, 29, 0.94);
+}
+
+body.theme-windows-xp-pdf .sidebar {
+  background: linear-gradient(180deg, #f3efe2, #e4dcc5);
+  border-right-color: #8ea0bb;
+  box-shadow: inset -1px 0 0 #ffffff;
+}
+
+body.theme-windows-98-pdf .sidebar {
+  background: #c0c0c0;
+  border-right: 2px solid #404040;
+  box-shadow: inset -1px 0 0 #ffffff;
+}
+
+body.theme-wizard-exe-setup .sidebar {
+  background: linear-gradient(180deg, #fafcff, #dfe8f5);
+  border-right-color: #93a9c7;
+}
+
+body.theme-windows-wizard-setup .sidebar {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent 120px),
+    linear-gradient(180deg, #0f4f9c, #0a3570 58%, #072654);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f7fbff;
+  padding-top: 34px;
+}
+
+body.theme-wii-u-menu .sidebar {
+  display: none;
+}
+
+.brand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.brand h1 { margin: 0; font-size: 24px; }
+.brand p { margin: 4px 0 0; color: var(--muted); }
+
+.brand-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--brand), #8a91ff);
+  font-weight: 800;
+}
+
+body.theme-windows-xp-pdf .brand-icon {
+  border-radius: 14px;
+  border: 1px solid #7f9db9;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+body.theme-windows-98-pdf .brand-icon {
+  border-radius: 0;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  box-shadow: none;
+}
+
+body.theme-wizard-exe-setup .brand-icon {
+  border-radius: 10px;
+  border: 1px solid #5a7cab;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body.theme-windows-wizard-setup .brand {
+  align-items: flex-start;
+  margin-bottom: 34px;
+}
+
+body.theme-windows-wizard-setup .brand h1,
+body.theme-windows-wizard-setup .brand p,
+body.theme-windows-wizard-setup .sidebar-heading,
+body.theme-windows-wizard-setup .sidebar-note p,
+body.theme-windows-wizard-setup .sidebar-form-meta {
+  color: #f4f8ff;
+}
+
+body.theme-windows-wizard-setup .brand-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+body.theme-wii-u-menu .brand {
+  display: none;
+}
+
+.brand-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.brand-avatar {
+  padding: 0;
+  overflow: hidden;
+}
+
+.sidebar-section { margin-top: 22px; }
+.sidebar-heading { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin-bottom: 10px; }
+.sidebar-note p { margin: 0; color: var(--muted); line-height: 1.5; }
+.forms-list { display: grid; gap: 10px; }
+
+.sidebar-form {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.sidebar-form.active,
+.sidebar-form:hover { border-color: var(--brand-2); background: #34373d; }
+
+body.theme-windows-xp-pdf .sidebar-form {
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fdfcf8, #e8e1ce);
+  border-color: #98a8bf;
+}
+
+body.theme-windows-xp-pdf .sidebar-form.active,
+body.theme-windows-xp-pdf .sidebar-form:hover {
+  background: linear-gradient(180deg, #fffefb, #d9ecff);
+  border-color: #4b7ff0;
+}
+
+body.theme-windows-98-pdf .sidebar-form {
+  border-radius: 0;
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-windows-98-pdf .sidebar-form.active,
+body.theme-windows-98-pdf .sidebar-form:hover {
+  background: #d4d0c8;
+  border-color: #808080 #404040 #404040 #ffffff;
+}
+
+body.theme-wizard-exe-setup .sidebar-form {
+  border-radius: 6px;
+  background: linear-gradient(180deg, #ffffff, #e8eff8);
+  border-color: #9bb0cb;
+}
+
+body.theme-wizard-exe-setup .sidebar-form.active,
+body.theme-wizard-exe-setup .sidebar-form:hover {
+  background: linear-gradient(180deg, #fefefe, #d8e7fb);
+  border-color: #4f86db;
+}
+
+body.theme-windows-wizard-setup .sidebar-form {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.08));
+  color: #ffffff;
+  padding: 14px;
+}
+
+body.theme-windows-wizard-setup .sidebar-form.active,
+body.theme-windows-wizard-setup .sidebar-form:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(173, 212, 255, 0.22));
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.sidebar-form-title { font-weight: 700; }
+.sidebar-form-meta { margin-top: 4px; color: var(--muted); font-size: 13px; }
+
+.main-panel { padding: 22px; }
+
+body.theme-windows-xp-pdf .main-panel,
+body.theme-windows-98-pdf .main-panel,
+body.theme-wizard-exe-setup .main-panel,
+body.theme-windows-wizard-setup .main-panel,
+body.theme-wii-u-menu .main-panel {
+  padding: 22px 24px 28px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+body.theme-windows-xp-pdf .topbar,
+body.theme-wizard-exe-setup .topbar {
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(224, 233, 246, 0.88));
+  border: 1px solid rgba(122, 146, 182, 0.85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+body.theme-windows-98-pdf .topbar {
+  padding: 12px 14px;
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-windows-wizard-setup .topbar {
+  padding: 22px 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff, #ddeafb);
+  border: 1px solid #97afd1;
+}
+
+body.theme-windows-wizard-setup[data-route="dashboard"] .sidebar,
+body.theme-windows-wizard-setup[data-route="dashboard"] .topbar {
+  display: none;
+}
+
+body.theme-windows-wizard-setup[data-route="dashboard"] .main-panel {
+  min-height: 100vh;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+body.theme-wii-u-menu .main-panel {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] .sidebar,
+body.theme-wii-u-menu[data-route="dashboard"] .topbar {
+  display: none;
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] .main-panel {
+  min-height: 100vh;
+}
+
+.topbar h2 { margin: 10px 0 0; font-size: 34px; }
+.topbar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.route-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(88, 101, 242, 0.18);
+  color: #cfd3ff;
+  padding: 6px 12px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.theme-windows-xp-pdf .route-badge {
+  background: linear-gradient(180deg, #eef5ff, #cfdef7);
+  color: #214a84;
+  border: 1px solid #8ca9cf;
+}
+
+body.theme-windows-98-pdf .route-badge {
+  border-radius: 0;
+  background: #000080;
+  color: #ffffff;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-wizard-exe-setup .route-badge {
+  background: linear-gradient(180deg, #edf4ff, #cedef8);
+  color: #214d86;
+  border: 1px solid #88a3ca;
+}
+
+body.theme-windows-wizard-setup .route-badge {
+  background: linear-gradient(180deg, #fdfefe, #d8e6f7);
+  color: #214d86;
+  border: 1px solid #a4bbda;
+}
+
+body.theme-wii-u-menu .route-badge {
+  background: linear-gradient(180deg, #ffffff, #dff6ff);
+  color: #2378a5;
+  border: 1px solid #b4dced;
+}
+
+.page-content { display: grid; gap: 18px; }
+
+.card, .hero-card, .question-card, .response-card {
+  background: linear-gradient(180deg, rgba(49, 51, 56, 0.96), rgba(35, 36, 40, 0.96));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+body.theme-windows-xp-pdf .card,
+body.theme-windows-xp-pdf .hero-card,
+body.theme-windows-xp-pdf .question-card,
+body.theme-windows-xp-pdf .response-card {
+  background: linear-gradient(180deg, #fffef9, #ece5d2);
+  border-radius: 12px;
+  border-color: #91a7c4;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 10px 24px rgba(22, 43, 86, 0.18);
+}
+
+body.theme-windows-98-pdf .card,
+body.theme-windows-98-pdf .hero-card,
+body.theme-windows-98-pdf .question-card,
+body.theme-windows-98-pdf .response-card {
+  background: var(--panel);
+  border-radius: 0;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-wizard-exe-setup .card,
+body.theme-wizard-exe-setup .hero-card,
+body.theme-wizard-exe-setup .question-card,
+body.theme-wizard-exe-setup .response-card {
+  background: linear-gradient(180deg, #ffffff, #ebf1f9);
+  border-radius: 10px;
+  border-color: #9eb0c8;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 16px 34px rgba(8, 23, 51, 0.18);
+}
+
+body.theme-windows-wizard-setup .card,
+body.theme-windows-wizard-setup .hero-card,
+body.theme-windows-wizard-setup .question-card,
+body.theme-windows-wizard-setup .response-card {
+  background: linear-gradient(180deg, #ffffff, #eef5fd);
+  border-radius: 24px;
+  border-color: #95afd2;
+}
+
+body.theme-wii-u-menu .card,
+body.theme-wii-u-menu .hero-card,
+body.theme-wii-u-menu .question-card,
+body.theme-wii-u-menu .response-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(243, 252, 255, 0.98));
+  border-radius: 30px;
+  border-color: #c0e4f2;
+}
+
+body.theme-wizard-exe-setup .page-content {
+  max-width: 980px;
+}
+
+body.theme-wizard-exe-setup .fill-header,
+body.theme-wizard-exe-setup .hero-card {
+  position: relative;
+  overflow: hidden;
+}
+
+body.theme-wizard-exe-setup .fill-header::before,
+body.theme-wizard-exe-setup .hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 150px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.08)),
+    linear-gradient(180deg, #5fa0f0, #255db7);
+}
+
+body.theme-wizard-exe-setup .fill-header > *,
+body.theme-wizard-exe-setup .hero-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.theme-wizard-exe-setup .fill-header,
+body.theme-wizard-exe-setup .hero-card {
+  padding-left: 176px;
+}
+
+body.theme-windows-wizard-setup .fill-header,
+body.theme-windows-wizard-setup .hero-card {
+  position: relative;
+  overflow: hidden;
+  padding-left: 150px;
+  background:
+    linear-gradient(90deg, rgba(13, 83, 168, 0.95) 0, rgba(13, 83, 168, 0.95) 96px, transparent 96px),
+    linear-gradient(180deg, #fafdff, #e1ebf8);
+}
+
+body.theme-wii-u-menu .fill-header,
+body.theme-wii-u-menu .hero-card {
+  background:
+    radial-gradient(circle at top, rgba(102, 218, 255, 0.3), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 251, 255, 0.98));
+}
+
+.card { padding: 18px; }
+.auth-card { max-width: 460px; }
+.hero-card {
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-chip {
+  display: inline-block;
+  background: rgba(35, 165, 89, 0.16);
+  color: #9eedb6;
+  border: 1px solid rgba(35, 165, 89, 0.3);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.hero-card h3 { font-size: 36px; line-height: 1.04; margin: 14px 0 10px; }
+.hero-card p { color: var(--muted); max-width: 55ch; line-height: 1.5; }
+.public-home-login-card { max-width: none; }
+
+.public-home-section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.public-form-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.public-form-card { height: 100%; }
+
+.public-form-status {
+  margin: 14px 0 0;
+  color: #ffb8ba;
+}
+
+.public-empty-state {
+  display: grid;
+  gap: 8px;
+}
+
+.message-card {
+  border-radius: 18px;
+  background: #1f2124;
+  border: 1px solid #42454c;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+body.theme-windows-xp-pdf .message-card {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff, #e8eef8);
+  border-color: #93a9c7;
+}
+
+body.theme-windows-98-pdf .message-card {
+  border-radius: 0;
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-wizard-exe-setup .message-card {
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #e8eff8);
+  border-color: #95abc7;
+}
+
+body.theme-windows-wizard-setup .message-card {
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #edf3fb);
+  border-color: #9ab2d3;
+}
+
+body.theme-wii-u-menu .message-card {
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff, #eaf9ff);
+  border-color: #c1e3ef;
+}
+
+.message-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a8fc, #5865f2);
+}
+
+.message-name { font-weight: 700; margin-bottom: 4px; }
+.message-body { color: var(--muted); }
+
+.primary-button, .secondary-button, .danger-button, .ghost-button {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.primary-button { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; }
+.secondary-button { background: #3f4147; color: white; }
+.danger-button { background: var(--danger); color: white; }
+.ghost-button { background: transparent; border: 1px solid var(--line); color: var(--text); }
+
+body.theme-windows-xp-pdf .primary-button,
+body.theme-windows-xp-pdf .secondary-button,
+body.theme-windows-xp-pdf .ghost-button {
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+body.theme-windows-xp-pdf .primary-button {
+  background: linear-gradient(180deg, #5c98f5, #2359c4);
+}
+
+body.theme-windows-xp-pdf .secondary-button {
+  background: linear-gradient(180deg, #fefefe, #dfd8c3);
+  color: #22314a;
+  border: 1px solid #8ca0bc;
+}
+
+body.theme-windows-xp-pdf .ghost-button {
+  background: linear-gradient(180deg, #fffefc, #e8e0cb);
+}
+
+body.theme-windows-98-pdf .primary-button,
+body.theme-windows-98-pdf .secondary-button,
+body.theme-windows-98-pdf .danger-button,
+body.theme-windows-98-pdf .ghost-button {
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-wizard-exe-setup .primary-button,
+body.theme-wizard-exe-setup .secondary-button,
+body.theme-wizard-exe-setup .ghost-button {
+  border-radius: 8px;
+}
+
+body.theme-wizard-exe-setup .primary-button {
+  background: linear-gradient(180deg, #4d8df1, #205fc6);
+}
+
+body.theme-wizard-exe-setup .secondary-button,
+body.theme-wizard-exe-setup .ghost-button {
+  background: linear-gradient(180deg, #ffffff, #dfe8f5);
+  color: #22334c;
+  border: 1px solid #91a7c6;
+}
+
+body.theme-windows-wizard-setup .primary-button,
+body.theme-windows-wizard-setup .secondary-button,
+body.theme-windows-wizard-setup .ghost-button {
+  border-radius: 999px;
+  border: 1px solid #8fa9cd;
+}
+
+body.theme-windows-wizard-setup .primary-button {
+  background: linear-gradient(180deg, #2c7bef, #1558c8);
+}
+
+body.theme-windows-wizard-setup .secondary-button,
+body.theme-windows-wizard-setup .ghost-button {
+  background: linear-gradient(180deg, #ffffff, #e2ecf9);
+  color: #22334c;
+}
+
+body.theme-wii-u-menu .primary-button,
+body.theme-wii-u-menu .secondary-button,
+body.theme-wii-u-menu .danger-button,
+body.theme-wii-u-menu .ghost-button {
+  border-radius: 999px;
+  padding-inline: 20px;
+  border: 1px solid #b9deec;
+  box-shadow: 0 8px 20px rgba(71, 169, 212, 0.16);
+}
+
+body.theme-wii-u-menu .primary-button {
+  background: linear-gradient(180deg, #34c8f6, #0ca5df);
+}
+
+body.theme-wii-u-menu .secondary-button,
+body.theme-wii-u-menu .ghost-button {
+  background: linear-gradient(180deg, #ffffff, #e6f9ff);
+  color: #234b63;
+}
+.full-width { width: 100%; }
+
+.dashboard-grid,
+.builder-grid,
+.responses-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+  gap: 18px;
+}
+
+.launcher-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.launcher-tile {
+  grid-column: span 3;
+  min-height: 180px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 251, 255, 0.98));
+  color: var(--text);
+  padding: 22px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.launcher-tile:hover,
+.launcher-tile:focus-visible {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--brand-2);
+  box-shadow: 0 24px 48px rgba(44, 134, 175, 0.22);
+}
+
+.launcher-tile-wide {
+  grid-column: span 6;
+}
+
+.launcher-tile-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #34c8f6, #0ca5df);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.launcher-tile-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.launcher-tile-meta {
+  color: var(--muted);
+}
+
+.launcher-hero {
+  margin-bottom: 4px;
+}
+
+.setup-window {
+  width: min(980px, calc(100vw - 48px));
+  height: min(720px, calc(100vh - 56px));
+  margin: 8px auto 0;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #8fa9cd;
+  background: linear-gradient(180deg, #fefefe, #e7f0fb);
+  box-shadow: 0 30px 80px rgba(8, 25, 58, 0.28);
+}
+
+.setup-sidebar {
+  padding: 28px 18px;
+  background: linear-gradient(180deg, #0d4c97, #0a3270 62%, #082551);
+  color: #ffffff;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.setup-sidebar-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.setup-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.setup-step span {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: 700;
+}
+
+.setup-step.active {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.14));
+  color: #ffffff;
+}
+
+.setup-main {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100%;
+}
+
+.setup-body {
+  padding: 26px;
+  overflow: auto;
+  display: grid;
+  gap: 18px;
+}
+
+.wizard-step-shell {
+  position: relative;
+  min-height: 100%;
+}
+
+.wizard-step-screen {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(26px);
+  pointer-events: none;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+}
+
+.wizard-step-screen.active {
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  animation: wizardStepEnter 260ms cubic-bezier(.2,.9,.2,1);
+}
+
+.wizard-step-header h3 {
+  margin: 6px 0 10px;
+  font-size: 34px;
+}
+
+.wizard-step-header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.wizard-step-kicker {
+  color: #42698f;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
+.wizard-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.wizard-summary-card,
+.wizard-info-card {
+  border-radius: 22px;
+  border: 1px solid #a3bad9;
+  background: linear-gradient(180deg, #ffffff, #eef4fb);
+  padding: 18px;
+}
+
+.wizard-summary-label {
+  color: #5e7695;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+.wizard-summary-value {
+  margin-top: 8px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.wizard-summary-small {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.wizard-info-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.wizard-info-card p,
+.wizard-choice-meta {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.setup-footer {
+  padding: 18px 24px;
+  border-top: 1px solid #b7cbe5;
+  background: linear-gradient(180deg, #ffffff, #e9f0fb);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.setup-footer-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.setup-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.setup-choice-card {
+  min-height: 132px;
+  border-radius: 22px;
+  border: 1px solid #9cb4d6;
+  background: linear-gradient(180deg, #ffffff, #eef4fb);
+  color: var(--text);
+  padding: 20px;
+  text-align: left;
+  display: grid;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.setup-choice-card:hover,
+.setup-choice-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(37, 92, 176, 0.16);
+}
+
+.wizard-choice-selected {
+  border-color: #4b83dd;
+  box-shadow:
+    0 20px 42px rgba(37, 92, 176, 0.14),
+    0 0 0 3px rgba(90, 141, 229, 0.14);
+  background: linear-gradient(180deg, #ffffff, #e7f1ff);
+}
+
+.setup-choice-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.setup-choice-copy {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.setup-hero-card {
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.wizard-finish-options {
+  display: grid;
+  gap: 12px;
+}
+
+.wizard-radio-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: 1px solid #9cb4d6;
+  background: linear-gradient(180deg, #ffffff, #eef4fb);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.wizard-radio-card:hover,
+.wizard-radio-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(37, 92, 176, 0.14);
+}
+
+.wizard-radio-card input {
+  margin-top: 4px;
+}
+
+.wizard-radio-card span {
+  display: grid;
+  gap: 4px;
+}
+
+.wizard-radio-card span span {
+  color: var(--muted);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@keyframes wizardStepEnter {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+body.theme-windows-wizard-setup .stats-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body.theme-wii-u-menu .stats-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body.theme-wii-u-menu .dashboard-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+body.theme-wii-u-menu .dashboard-grid > .hero-card {
+  grid-column: 1 / -1;
+}
+
+body.theme-wii-u-menu .dashboard-grid > .card {
+  grid-column: span 6;
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] .page-content {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.console-home-screen {
+  position: relative;
+  min-height: 100vh;
+  padding: 34px 34px 136px;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 22px;
+  overflow: hidden;
+}
+
+.console-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.console-glow,
+.console-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(8px);
+  opacity: 0.75;
+}
+
+.console-glow {
+  width: 38vw;
+  height: 38vw;
+  background: radial-gradient(circle, rgba(113, 222, 255, 0.34), transparent 68%);
+  animation: consoleFloat 12s ease-in-out infinite;
+}
+
+.console-glow-left {
+  top: -10vw;
+  left: -8vw;
+}
+
+.console-glow-right {
+  right: -6vw;
+  bottom: 18vh;
+  animation-delay: -5s;
+}
+
+.console-orb {
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.75);
+  animation: consolePulse 4.2s ease-in-out infinite;
+}
+
+.console-orb-a {
+  top: 20%;
+  right: 22%;
+}
+
+.console-orb-b {
+  left: 18%;
+  bottom: 26%;
+  animation-delay: -2s;
+}
+
+.console-header,
+.console-launcher-shell,
+.console-sidecard,
+.console-dock,
+.console-statusbar {
+  position: relative;
+  z-index: 1;
+}
+
+.console-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: start;
+}
+
+.console-eyebrow {
+  color: #3e89a7;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.console-title {
+  margin: 0;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1;
+}
+
+.console-subtitle {
+  margin: 10px 0 0;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.console-status-cluster {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.console-status-pill {
+  min-width: 120px;
+  padding: 14px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(164, 216, 234, 0.9);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 26px rgba(26, 127, 160, 0.12);
+}
+
+.console-status-label {
+  display: block;
+  color: #4b7f98;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.console-launcher-shell {
+  display: grid;
+  place-items: center;
+}
+
+.console-launcher-frame {
+  width: min(1180px, 100%);
+  padding: 18px 6px;
+}
+
+body.theme-wii-u-menu .launcher-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+}
+
+body.theme-wii-u-menu .launcher-tile {
+  border-color: rgba(181, 223, 237, 0.95);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 252, 255, 0.98));
+  min-height: 176px;
+  transform-origin: center bottom;
+  transition:
+    transform 180ms cubic-bezier(.2,.9,.2,1),
+    box-shadow 180ms cubic-bezier(.2,.9,.2,1),
+    border-color 180ms ease,
+    background 180ms ease,
+    opacity 180ms ease,
+    filter 180ms ease;
+}
+
+body.theme-wii-u-menu .launcher-tile-form {
+  background: linear-gradient(180deg, #ffffff, #f3fcff);
+}
+
+body.theme-wii-u-menu .launcher-tile-system {
+  background: linear-gradient(180deg, #e8fbff, #daf6ff);
+}
+
+body.theme-wii-u-menu .launcher-tile:hover,
+body.theme-wii-u-menu .launcher-tile:focus-visible {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 30px 58px rgba(20, 162, 215, 0.24);
+}
+
+body.theme-wii-u-menu .launcher-tile:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+body.theme-wii-u-menu .launcher-tile.console-selected {
+  transform: translateY(-10px) scale(1.075);
+  border-color: #63d7ff;
+  box-shadow:
+    0 34px 66px rgba(20, 162, 215, 0.28),
+    0 0 0 4px rgba(101, 218, 255, 0.28);
+  background: linear-gradient(180deg, #ffffff, #eefcff);
+  z-index: 2;
+}
+
+body.theme-wii-u-menu .launcher-tile.console-dimmed {
+  opacity: 0.72;
+  filter: saturate(0.85);
+}
+
+body.theme-wii-u-menu .launcher-tile.console-activating {
+  transform: translateY(-4px) scale(0.985);
+  transition-duration: 90ms;
+}
+
+.console-sidecard {
+  width: min(420px, 100%);
+  justify-self: end;
+  padding: 16px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(181, 223, 237, 0.95);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 30px rgba(26, 127, 160, 0.12);
+}
+
+.console-sidecard-title {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #427b96;
+  margin-bottom: 8px;
+}
+
+.console-sidecard-copy {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.console-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 46px;
+  transform: translateX(-50%);
+  width: min(980px, calc(100vw - 42px));
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(177, 222, 237, 0.95);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(233, 248, 255, 0.96));
+  box-shadow: 0 24px 48px rgba(26, 127, 160, 0.18);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: stretch;
+  backdrop-filter: blur(14px);
+}
+
+.console-dock-item {
+  min-width: 112px;
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 10px 14px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 6px;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    transform 170ms cubic-bezier(.2,.9,.2,1),
+    background 170ms ease,
+    box-shadow 170ms ease,
+    opacity 170ms ease;
+}
+
+.console-dock-item:hover,
+.console-dock-item:focus-visible {
+  background: rgba(113, 222, 255, 0.18);
+  transform: translateY(-3px) scale(1.04);
+}
+
+.console-dock-item.console-selected {
+  background: rgba(113, 222, 255, 0.24);
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 18px 36px rgba(20, 162, 215, 0.18);
+}
+
+.console-dock-item.console-dimmed {
+  opacity: 0.76;
+}
+
+.console-dock-item.console-activating {
+  transform: translateY(-1px) scale(0.98);
+  transition-duration: 90ms;
+}
+
+.console-dock-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #34c8f6, #0ca5df);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.console-theme-dock {
+  min-width: 200px;
+}
+
+.console-theme-select {
+  width: 100%;
+  border: 1px solid #b6ddeb;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text);
+}
+
+.console-statusbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 26px 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(220, 245, 255, 0.92));
+  border-top: 1px solid rgba(179, 223, 238, 0.9);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  color: #487d96;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(12px);
+}
+
+.console-statusbar-center {
+  text-align: center;
+}
+
+.console-statusbar-right {
+  text-align: right;
+}
+
+@keyframes consoleFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, 18px, 0); }
+}
+
+@keyframes consolePulse {
+  0%, 100% { transform: scale(0.92); opacity: 0.45; }
+  50% { transform: scale(1.12); opacity: 0.9; }
+}
+
+body.theme-windows-wizard-setup .setup-window {
+  width: min(980px, calc(100vw - 48px));
+}
+
+body.theme-windows-wizard-setup .page-content {
+  justify-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px 18px;
+}
+
+body.theme-windows-wizard-setup .stats-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stat-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+
+body.theme-windows-xp-pdf .stat-card {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fdfcf8, #e4dcc7);
+  border-color: #92a8c3;
+}
+
+body.theme-windows-98-pdf .stat-card {
+  border-radius: 0;
+  background: #d4d0c8;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-wizard-exe-setup .stat-card {
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #e3ebf7);
+  border-color: #98adc9;
+}
+
+body.theme-windows-wizard-setup .stat-card {
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff, #e7f0fb);
+  border-color: #9ab3d4;
+}
+
+body.theme-wii-u-menu .stat-card {
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff, #edfbff);
+  border-color: #c3e6f0;
+}
+
+.stat-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+.stat-value { font-size: 30px; font-weight: 800; margin-top: 6px; }
+
+.field-group { display: grid; gap: 8px; margin-bottom: 14px; }
+.field-group label { color: var(--muted); font-size: 14px; }
+.text-input, .text-area, .select-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #4b4f58;
+  background: var(--input);
+  color: var(--text);
+  padding: 12px 14px;
+}
+
+body.theme-windows-xp-pdf .text-input,
+body.theme-windows-xp-pdf .text-area,
+body.theme-windows-xp-pdf .select-input {
+  border-radius: 4px;
+  border-color: #7f9db9;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+body.theme-windows-98-pdf .text-input,
+body.theme-windows-98-pdf .text-area,
+body.theme-windows-98-pdf .select-input {
+  border-radius: 0;
+  border-top-color: #808080;
+  border-left-color: #808080;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+body.theme-wizard-exe-setup .text-input,
+body.theme-wizard-exe-setup .text-area,
+body.theme-wizard-exe-setup .select-input {
+  border-radius: 6px;
+  border-color: #8ca4c4;
+  box-shadow: inset 0 1px 2px rgba(22, 42, 80, 0.06);
+}
+
+.text-area { min-height: 104px; resize: vertical; }
+.builder-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.section-title { margin: 0 0 14px; font-size: 20px; }
+.section-copy { margin: 0 0 16px; color: var(--muted); line-height: 1.5; }
+
+.questions-stack, .responses-stack { display: grid; gap: 14px; }
+.question-card, .response-card { padding: 18px; }
+
+.question-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.question-type { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+.question-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.choice-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.choice-pill {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #212327;
+  border: 1px solid #43464d;
+  margin: 4px 8px 0 0;
+}
+
+body.theme-windows-xp-pdf .choice-pill,
+body.theme-windows-xp-pdf .rating-pill span,
+body.theme-windows-xp-pdf .emoji-chip,
+body.theme-windows-xp-pdf .emoji-react-icon,
+body.theme-windows-xp-pdf .source-choice span {
+  background: linear-gradient(180deg, #fffefb, #e8e0cb);
+  border-color: #92a8c3;
+  color: #22344d;
+}
+
+body.theme-windows-98-pdf .choice-pill,
+body.theme-windows-98-pdf .rating-pill span,
+body.theme-windows-98-pdf .emoji-chip,
+body.theme-windows-98-pdf .emoji-react-icon,
+body.theme-windows-98-pdf .source-choice span {
+  border-radius: 0;
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  color: #111111;
+}
+
+body.theme-wizard-exe-setup .choice-pill,
+body.theme-wizard-exe-setup .rating-pill span,
+body.theme-wizard-exe-setup .emoji-chip,
+body.theme-wizard-exe-setup .emoji-react-icon,
+body.theme-wizard-exe-setup .source-choice span {
+  background: linear-gradient(180deg, #ffffff, #e4ecf8);
+  border-color: #98adc7;
+  color: #20324d;
+}
+
+.rating-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rating-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-pill input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rating-pill span {
+  min-width: 46px;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #212327;
+  border: 1px solid #43464d;
+}
+
+.rating-pill input:checked + span {
+  background: rgba(88, 101, 242, 0.18);
+  border-color: var(--brand-2);
+  color: #dfe2ff;
+}
+
+.fillblank-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.fillblank-prompt {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #23262b;
+  border: 1px dashed #535862;
+  color: var(--muted);
+}
+
+.fillblank-input {
+  border-color: rgba(88, 101, 242, 0.4);
+}
+
+.branchfill-config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.branchfill-config-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.branchfill-config-head {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.branchfill-prompts-area {
+  min-height: 112px;
+}
+
+.branchfill-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.branchfill-helper {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.branchfill-panels {
+  display: grid;
+  gap: 12px;
+}
+
+.branchfill-panel {
+  display: none;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.branchfill-panel.active {
+  display: grid;
+}
+
+.branchfill-panel-title {
+  font-weight: 700;
+}
+
+.branchfill-followup {
+  display: grid;
+  gap: 6px;
+}
+
+.branchfill-answer {
+  display: grid;
+  gap: 8px;
+}
+
+.branchfill-answer-list {
+  display: grid;
+  gap: 8px;
+}
+
+.branchfill-answer-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.branchfill-answer-prompt {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.emoji-preview-row,
+.emoji-react-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.emoji-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 14px;
+  background: #212327;
+  border: 1px solid #43464d;
+  font-size: 22px;
+}
+
+.emoji-react-pill {
+  position: relative;
+  display: inline-flex;
+}
+
+.emoji-react-pill input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.emoji-react-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  min-height: 58px;
+  border-radius: 18px;
+  background: #202227;
+  border: 1px solid #43464d;
+  font-size: 28px;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.emoji-react-pill input:checked + .emoji-react-icon {
+  background: rgba(88, 101, 242, 0.18);
+  border-color: var(--brand-2);
+  transform: translateY(-2px);
+}
+
+.text-block-read {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #23262b;
+  border: 1px solid #43464d;
+  color: var(--muted);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.note-pdf-block {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #20242b, #171a20);
+  border: 1px solid #43464d;
+}
+
+.note-pdf-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.note-pdf-badge,
+.note-pdf-reference {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid #4f5867;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.note-pdf-reference {
+  font-family: "IBM Plex Mono", "Cascadia Code", monospace;
+  letter-spacing: 0.06em;
+}
+
+.note-pdf-body {
+  color: var(--text);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.media-block {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #23262b;
+  border: 1px solid #43464d;
+}
+
+.media-block-image {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #111318;
+}
+
+.media-block-caption {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.media-builder-card {
+  padding: 12px;
+  border-radius: 14px;
+  background: #23262b;
+  border: 1px solid #43464d;
+}
+
+.media-inline-note {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.drawing-input-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.drawing-help {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.drawing-canvas {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  touch-action: none;
+  cursor: crosshair;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 2px dashed rgba(120, 136, 168, 0.65);
+  box-shadow: inset 0 1px 6px rgba(15, 23, 42, 0.08);
+}
+
+.drawing-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.code-input-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.code-editor-shell,
+.code-response {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #3f4652;
+  background: #0f1722;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.code-editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #283243;
+  background: linear-gradient(180deg, #1a2432, #121a27);
+}
+
+.code-editor-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.code-editor-dot-red { background: #ff6b6b; }
+.code-editor-dot-yellow { background: #ffd166; }
+.code-editor-dot-green { background: #4dd599; }
+.code-editor-title {
+  margin-left: 8px;
+  color: #96a5ba;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.code-editor-stage {
+  position: relative;
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+}
+
+.code-editor-highlight,
+.code-editor-textarea,
+.code-response {
+  margin: 0;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  tab-size: 2;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code-editor-highlight,
+.code-editor-textarea {
+  padding: 16px 16px 16px 14px;
+}
+
+.code-editor-lines {
+  margin: 0;
+  padding: 16px 8px 16px 0;
+  display: grid;
+  align-content: start;
+  justify-items: end;
+  border-right: 1px solid #243042;
+  background: linear-gradient(180deg, #111b28, #0d1723);
+  color: #60748b;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow: hidden;
+  user-select: none;
+}
+
+.code-editor-highlight {
+  min-height: 220px;
+  color: #d7e3f4;
+  pointer-events: none;
+  grid-column: 2;
+}
+
+.code-editor-textarea {
+  position: absolute;
+  inset: 0 0 0 56px;
+  width: calc(100% - 56px);
+  min-height: 220px;
+  resize: vertical;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: #f8fafc;
+  outline: none;
+}
+
+.code-editor-textarea::placeholder {
+  color: transparent;
+}
+
+.code-response {
+  padding: 16px;
+  color: #d7e3f4;
+}
+
+.code-token-keyword { color: #7dd3fc; }
+.code-token-string { color: #f9a8d4; }
+.code-token-number { color: #fbbf24; }
+.code-token-comment { color: #7c8aa0; }
+.code-token-constant { color: #c4b5fd; }
+.code-token-builtin { color: #67e8f9; }
+.code-token-function { color: #86efac; }
+.code-token-operator { color: #fda4af; }
+.code-token-punctuation { color: #cbd5e1; }
+
+.animation-input-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.animation-studio,
+.animation-response-player {
+  display: grid;
+  gap: 14px;
+}
+
+.animation-stage-card {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(20, 25, 34, 0.92), rgba(14, 18, 25, 0.94));
+  border: 1px solid #344154;
+}
+
+.animation-stage-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.animation-stage-badge,
+.animation-stage-meta,
+.animation-timeline-number {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.animation-stage-badge {
+  color: #d6def0;
+}
+
+.animation-stage-meta,
+.animation-timeline-number {
+  color: var(--muted);
+}
+
+.animation-stage-canvas {
+  min-height: 320px;
+  position: relative;
+  z-index: 2;
+}
+
+.animation-stage-stack {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #36465d;
+}
+
+.animation-stage-checker {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(45deg, #eef4fb 25%, transparent 25%, transparent 75%, #eef4fb 75%),
+    linear-gradient(45deg, #eef4fb 25%, transparent 25%, transparent 75%, #eef4fb 75%);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+}
+
+.animation-onion-skin {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.animation-onion-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.animation-opacity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.animation-opacity-control input {
+  width: 220px;
+}
+
+.animation-toolbar,
+.animation-response-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.animation-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.animation-timeline-frame {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid #394559;
+  background: rgba(23, 28, 38, 0.82);
+  cursor: pointer;
+  text-align: left;
+}
+
+.animation-timeline-frame.active {
+  border-color: #6c8dff;
+  box-shadow: 0 0 0 2px rgba(108, 141, 255, 0.18);
+}
+
+.animation-timeline-thumb,
+.animation-thumb,
+.animation-response-screen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+.animation-timeline-thumb {
+  min-height: 62px;
+}
+
+.animation-timeline-thumb.filled {
+  border-color: #7aa2ff;
+}
+
+.animation-response-screen {
+  max-height: 320px;
+}
+
+body.theme-windows-xp-pdf .text-block-read,
+body.theme-windows-xp-pdf .note-pdf-block,
+body.theme-windows-xp-pdf .media-block,
+body.theme-windows-xp-pdf .media-builder-card,
+body.theme-windows-xp-pdf .graph-block,
+body.theme-windows-xp-pdf .pdf-guide {
+  background: linear-gradient(180deg, #fffefb, #ece4cf);
+  border-color: #97abc5;
+  color: #314763;
+}
+
+body.theme-windows-98-pdf .text-block-read,
+body.theme-windows-98-pdf .note-pdf-block,
+body.theme-windows-98-pdf .media-block,
+body.theme-windows-98-pdf .media-builder-card,
+body.theme-windows-98-pdf .graph-block,
+body.theme-windows-98-pdf .pdf-guide {
+  border-radius: 0;
+  background: #d4d0c8;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  color: #262626;
+}
+
+body.theme-wizard-exe-setup .text-block-read,
+body.theme-wizard-exe-setup .note-pdf-block,
+body.theme-wizard-exe-setup .media-block,
+body.theme-wizard-exe-setup .media-builder-card,
+body.theme-wizard-exe-setup .graph-block,
+body.theme-wizard-exe-setup .pdf-guide {
+  background: linear-gradient(180deg, #ffffff, #e7eef8);
+  border-color: #9caeca;
+  color: #344965;
+}
+
+body.theme-windows-xp-pdf .drawing-canvas {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #7fa1cf;
+}
+
+body.theme-windows-98-pdf .drawing-canvas {
+  border-radius: 0;
+  border: 2px solid #808080;
+  border-top-color: #404040;
+  border-left-color: #404040;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+  box-shadow: none;
+}
+
+body.theme-wizard-exe-setup .drawing-canvas {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #94abd0;
+}
+
+body.theme-windows-wizard-setup .drawing-canvas {
+  border-radius: 14px;
+  border-style: solid;
+  border-color: #94abd0;
+}
+
+body.theme-wii-u-menu .drawing-canvas {
+  border-radius: 22px;
+  border-style: solid;
+  border-color: #bfe0ec;
+}
+
+body.theme-windows-xp-pdf .code-editor-shell,
+body.theme-windows-xp-pdf .code-response {
+  border-radius: 10px;
+  border-color: #89a7d0;
+}
+
+body.theme-windows-98-pdf .code-editor-shell,
+body.theme-windows-98-pdf .code-response {
+  border-radius: 0;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-wizard-exe-setup .code-editor-shell,
+body.theme-wizard-exe-setup .code-response {
+  border-radius: 10px;
+  border-color: #94abd0;
+}
+
+body.theme-windows-wizard-setup .code-editor-shell,
+body.theme-windows-wizard-setup .code-response,
+body.theme-windows-wizard-setup .animation-stage-stack {
+  border-radius: 14px;
+  border-color: #94abd0;
+}
+
+body.theme-wii-u-menu .code-editor-shell,
+body.theme-wii-u-menu .code-response,
+body.theme-wii-u-menu .animation-stage-stack {
+  border-radius: 22px;
+  border-color: #bfe0ec;
+}
+
+.graph-row {
+  display: grid;
+  grid-template-columns: 1fr 120px auto;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.graph-block {
+  padding: 16px;
+  border-radius: 16px;
+  background: #23262b;
+  border: 1px solid #43464d;
+}
+
+.graph-caption {
+  margin-bottom: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.graph-bars {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  min-height: 190px;
+  flex-wrap: wrap;
+}
+
+.graph-bar-card {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-width: 74px;
+}
+
+.graph-bar-label,
+.graph-bar-value {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.graph-bar-track {
+  width: 56px;
+  height: 150px;
+  border-radius: 16px;
+  background: #1c1e22;
+  border: 1px solid #43464d;
+  display: flex;
+  align-items: end;
+  padding: 6px;
+}
+
+.graph-bar-fill {
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #8ea1ff, #5865f2);
+}
+
+.pdf-guide {
+  margin-top: 14px;
+  border: 1px solid #43464d;
+  border-radius: 14px;
+  background: #23262b;
+  overflow: hidden;
+}
+
+.pdf-guide summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+.pdf-guide-copy {
+  padding: 0 14px 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.pdf-guide-copy p {
+  margin: 10px 0;
+}
+
+.pdf-guide code {
+  background: #1b1d21;
+  border: 1px solid #3d4148;
+  border-radius: 8px;
+  padding: 2px 6px;
+  color: var(--text);
+}
+
+.scale-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.share-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.empty-inline {
+  border: 1px dashed #555964;
+  border-radius: 14px;
+  padding: 16px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.response-meta { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+.answer-block { margin-bottom: 14px; }
+.answer-label { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 6px; }
+.answer-value { background: #1f2124; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.answer-image {
+  display: block;
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+body.theme-windows-xp-pdf .answer-value {
+  background: #ffffff;
+  border-color: #97abc5;
+  color: #23344c;
+}
+
+body.theme-windows-98-pdf .answer-value {
+  border-radius: 0;
+  background: #ffffff;
+  border: 2px inset #c0c0c0;
+  color: #111111;
+}
+
+body.theme-wizard-exe-setup .answer-value {
+  background: #ffffff;
+  border-color: #9db0c9;
+  color: #23354e;
+}
+
+.fill-header { padding: 22px; }
+.fill-title { margin: 0 0 8px; font-size: 34px; }
+.fill-description { margin: 0; color: var(--muted); line-height: 1.6; }
+
+.question-label { display: block; margin-bottom: 10px; font-size: 18px; font-weight: 700; }
+.required-tag { color: #ff9498; font-size: 13px; margin-left: 8px; }
+.submit-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.discord-user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.discord-user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.discord-user-avatar {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+}
+
+.discord-user-fallback {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+  font-weight: 800;
+}
+
+.submit-step {
+  display: grid;
+  gap: 14px;
+}
+
+.source-choice-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.source-choice {
+  position: relative;
+  display: inline-flex;
+}
+
+.source-choice input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.source-choice span {
+  min-width: 120px;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #212327;
+  border: 1px solid #43464d;
+}
+
+.source-choice input:checked + span {
+  background: rgba(88, 101, 242, 0.18);
+  border-color: var(--brand-2);
+  color: #dfe2ff;
+}
+
+.at-input-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: stretch;
+}
+
+.at-input-prefix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 0 12px;
+  background: #212327;
+  border: 1px solid #4b4f58;
+  border-right: 0;
+  border-radius: 12px 0 0 12px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+body.theme-windows-98-pdf .at-input-prefix {
+  border-radius: 0;
+  border-width: 2px;
+  border-color: #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+}
+
+body.theme-windows-xp-pdf .at-input-prefix,
+body.theme-wizard-exe-setup .at-input-prefix {
+  background: linear-gradient(180deg, #fffefb, #e3ebf8);
+  color: #264269;
+}
+
+.at-input-field {
+  border-radius: 0 12px 12px 0;
+}
+
+.toast {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(35, 165, 89, 0.12);
+  border: 1px solid rgba(35, 165, 89, 0.35);
+  color: #98f5b6;
+}
+.error-toast {
+  background: rgba(218, 55, 60, 0.14);
+  border-color: rgba(218, 55, 60, 0.38);
+  color: #ffacb0;
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] .shell {
+  display: block;
+  min-height: 100vh;
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] .page-content {
+  min-height: 100vh;
+  padding: 0;
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(153, 241, 255, 0.42), transparent 22%),
+    radial-gradient(circle at 80% 16%, rgba(150, 218, 255, 0.28), transparent 20%),
+    linear-gradient(180deg, #effcff 0%, #d5f1fb 48%, #c3e6f5 100%);
+}
+
+body.theme-wii-u-menu[data-route="dashboard"] .main-panel {
+  display: block;
+}
+
+body.theme-wii-u-menu .console-home-screen {
+  min-height: 100vh;
+  padding: 18px 24px 112px;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 18px;
+  overflow: hidden;
+}
+
+body.theme-wii-u-menu .console-stage {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 20px;
+  min-height: 0;
+}
+
+body.theme-wii-u-menu .console-header {
+  width: min(1080px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 18px;
+}
+
+body.theme-wii-u-menu .console-header-copy {
+  justify-self: center;
+  text-align: center;
+}
+
+body.theme-wii-u-menu .console-eyebrow {
+  margin-bottom: 8px;
+  color: #5598b2;
+  letter-spacing: 0.18em;
+}
+
+body.theme-wii-u-menu .console-title {
+  margin: 0;
+  color: #275269;
+  font-size: clamp(30px, 3.8vw, 48px);
+  font-weight: 700;
+}
+
+body.theme-wii-u-menu .console-subtitle {
+  margin: 10px auto 0;
+  max-width: 54ch;
+  color: #5d8398;
+  font-size: 15px;
+}
+
+body.theme-wii-u-menu .console-status-cluster {
+  display: flex;
+  gap: 10px;
+}
+
+body.theme-wii-u-menu .console-status-pill {
+  min-width: 108px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(171, 218, 234, 0.95);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(236, 249, 255, 0.92));
+  box-shadow: 0 10px 22px rgba(55, 142, 173, 0.12);
+  color: #2a5d77;
+}
+
+body.theme-wii-u-menu .console-launcher-shell {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+body.theme-wii-u-menu .console-launcher-frame {
+  width: min(980px, 100%);
+  display: grid;
+  place-items: center;
+}
+
+body.theme-wii-u-menu .launcher-grid {
+  width: fit-content;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 184px);
+  grid-auto-rows: 184px;
+  gap: 22px;
+  justify-content: center;
+  align-content: center;
+}
+
+body.theme-wii-u-menu .launcher-tile,
+body.theme-wii-u-menu .launcher-tile-wide {
+  grid-column: span 1;
+  min-height: 184px;
+  padding: 16px 14px;
+  border-radius: 34px;
+  border: 1px solid rgba(173, 219, 235, 0.96);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 250, 255, 0.98));
+  box-shadow: 0 14px 32px rgba(67, 149, 178, 0.16);
+  transform-origin: center center;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 8px;
+  text-align: center;
+  transition:
+    transform 240ms cubic-bezier(.2,.82,.2,1),
+    box-shadow 240ms cubic-bezier(.2,.82,.2,1),
+    opacity 240ms ease,
+    filter 240ms ease,
+    border-color 240ms ease,
+    background 240ms ease;
+}
+
+body.theme-wii-u-menu .launcher-tile-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  margin: 0;
+  background: linear-gradient(180deg, #55d7ff, #0ba6df);
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.36);
+}
+
+body.theme-wii-u-menu .launcher-tile-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #244e66;
+}
+
+body.theme-wii-u-menu .launcher-tile-meta {
+  color: #7296a8;
+  font-size: 12px;
+}
+
+body.theme-wii-u-menu .launcher-tile:hover,
+body.theme-wii-u-menu .launcher-tile:focus-visible {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 22px 42px rgba(67, 149, 178, 0.24);
+}
+
+body.theme-wii-u-menu .launcher-tile.console-selected {
+  transform: translateY(-8px) scale(1.09);
+  border-color: #58cbf8;
+  background: linear-gradient(180deg, #ffffff, #f2fdff);
+  box-shadow:
+    0 30px 58px rgba(34, 157, 203, 0.26),
+    0 0 0 4px rgba(103, 219, 255, 0.28);
+  z-index: 3;
+}
+
+body.theme-wii-u-menu .launcher-tile.console-dimmed {
+  opacity: 0.58;
+  filter: saturate(0.82) brightness(0.96);
+}
+
+body.theme-wii-u-menu .launcher-tile.console-activating {
+  transform: translateY(-3px) scale(1.02);
+  transition-duration: 110ms;
+}
+
+body.theme-wii-u-menu .console-sidecard {
+  width: min(760px, calc(100vw - 40px));
+  justify-self: center;
+  padding: 14px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(170, 217, 233, 0.95);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 10px 22px rgba(67, 149, 178, 0.12);
+  text-align: center;
+}
+
+body.theme-wii-u-menu .console-sidecard-title {
+  margin-bottom: 6px;
+  color: #5888a1;
+}
+
+body.theme-wii-u-menu .console-sidecard-copy {
+  color: #607f92;
+}
+
+body.theme-wii-u-menu .console-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 42px;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: calc(100vw - 34px);
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(171, 218, 234, 0.95);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(230, 247, 255, 0.95));
+  box-shadow: 0 20px 42px rgba(67, 149, 178, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(12px);
+}
+
+body.theme-wii-u-menu .console-dock-item {
+  min-width: 84px;
+  padding: 8px 10px;
+  border-radius: 22px;
+  gap: 4px;
+  color: #3b6479;
+  transition:
+    transform 220ms cubic-bezier(.2,.82,.2,1),
+    box-shadow 220ms cubic-bezier(.2,.82,.2,1),
+    background 220ms ease,
+    opacity 220ms ease;
+}
+
+body.theme-wii-u-menu .console-dock-item:hover,
+body.theme-wii-u-menu .console-dock-item:focus-visible {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(90, 209, 245, 0.16);
+}
+
+body.theme-wii-u-menu .console-dock-item.console-selected {
+  transform: translateY(-5px) scale(1.11);
+  background: rgba(90, 209, 245, 0.2);
+  box-shadow: 0 16px 28px rgba(34, 157, 203, 0.18);
+}
+
+body.theme-wii-u-menu .console-dock-item.console-dimmed {
+  opacity: 0.62;
+}
+
+body.theme-wii-u-menu .console-dock-item.console-activating {
+  transform: translateY(-1px) scale(1);
+}
+
+body.theme-wii-u-menu .console-dock-icon {
+  width: 30px;
+  height: 30px;
+  font-size: 11px;
+}
+
+body.theme-wii-u-menu .console-statusbar {
+  min-height: 34px;
+  padding: 7px 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(224, 244, 252, 0.9));
+  border: 1px solid rgba(174, 219, 233, 0.92);
+  color: #487084;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+}
+
+body.theme-wii-u-menu .console-statusbar-top {
+  position: relative;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+body.theme-wii-u-menu .console-statusbar-bottom {
+  position: fixed;
+  left: 18px;
+  right: 18px;
+  bottom: 6px;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+body.theme-wii-u-menu .console-mini-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 999px;
+  background: #40d0f7;
+  box-shadow: 0 0 10px rgba(64, 208, 247, 0.65);
+}
+
+body.theme-wii-u-menu .console-theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.theme-wii-u-menu .console-theme-select {
+  border-radius: 999px;
+  padding: 6px 12px;
+  min-width: 188px;
+  border: 1px solid #abdbe9;
+  background: rgba(255, 255, 255, 0.88);
+  color: #29546c;
+}
+
+body.theme-windows-wizard-setup[data-route="dashboard"] {
+  background: linear-gradient(180deg, #9fb8d5 0%, #89a7c9 100%);
+}
+
+body.theme-windows-wizard-setup[data-route="dashboard"] .shell {
+  display: block;
+  min-height: 100vh;
+}
+
+body.theme-windows-wizard-setup[data-route="dashboard"] .page-content {
+  width: 100%;
+  min-height: 100vh;
+  padding: 28px 18px;
+  justify-items: center;
+}
+
+body.theme-windows-wizard-setup .setup-backdrop {
+  width: 100%;
+  min-height: calc(100vh - 56px);
+  display: grid;
+  place-items: center;
+}
+
+body.theme-windows-wizard-setup .setup-window {
+  width: min(900px, calc(100vw - 44px));
+  height: min(640px, calc(100vh - 64px));
+  display: grid;
+  grid-template-columns: 224px 1fr;
+  grid-template-rows: auto 1fr;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid #6d86a8;
+  background: #f6f7fb;
+  box-shadow: 0 28px 60px rgba(18, 30, 52, 0.3);
+}
+
+body.theme-windows-wizard-setup .setup-titlebar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 7px 10px;
+  background: linear-gradient(180deg, #fefefe, #d7e2f1);
+  border-bottom: 1px solid #98aeca;
+}
+
+body.theme-windows-wizard-setup .setup-titlebar-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #233954;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+body.theme-windows-wizard-setup .setup-titlebar-icon {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #4db4f3, #146cb6);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+body.theme-windows-wizard-setup .setup-titlebar-theme label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #304e6c;
+  font-size: 12px;
+}
+
+body.theme-windows-wizard-setup .setup-theme-select {
+  min-width: 180px;
+  height: 28px;
+  border-radius: 3px;
+  border: 1px solid #8ea7c3;
+  background: #ffffff;
+  color: #20374e;
+}
+
+body.theme-windows-wizard-setup .setup-sidebar {
+  padding: 20px 14px;
+  background: linear-gradient(180deg, #eef3f9, #dbe4f0);
+  border-right: 1px solid #b4c4d8;
+  color: #314a63;
+  gap: 8px;
+}
+
+body.theme-windows-wizard-setup .setup-sidebar-title {
+  margin-bottom: 4px;
+  font-size: 18px;
+  color: #20374e;
+}
+
+body.theme-windows-wizard-setup .setup-sidebar-copy {
+  margin-bottom: 12px;
+  color: #587089;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+body.theme-windows-wizard-setup .setup-step {
+  padding: 9px 10px;
+  border-radius: 0;
+  color: #5a728c;
+}
+
+body.theme-windows-wizard-setup .setup-step span {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #c8d6e6;
+  color: #284662;
+}
+
+body.theme-windows-wizard-setup .setup-step.active {
+  background: linear-gradient(180deg, #fefefe, #dfe9f6);
+  color: #17304c;
+  box-shadow: inset 0 0 0 1px #8ca6c3;
+}
+
+body.theme-windows-wizard-setup .setup-step.complete {
+  color: #2f5876;
+}
+
+body.theme-windows-wizard-setup .setup-step.complete span {
+  background: linear-gradient(180deg, #c3e6b7, #8dc172);
+  color: #21421a;
+}
+
+body.theme-windows-wizard-setup .setup-main {
+  grid-template-rows: 1fr auto;
+  min-height: 0;
+  background: #f9fbfd;
+}
+
+body.theme-windows-wizard-setup .setup-body {
+  padding: 28px 28px 18px;
+  background: linear-gradient(180deg, #ffffff, #f4f7fb);
+}
+
+body.theme-windows-wizard-setup .wizard-step-shell {
+  min-height: 100%;
+}
+
+body.theme-windows-wizard-setup .wizard-step-screen {
+  gap: 16px;
+  transform: translateX(18px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+body.theme-windows-wizard-setup .wizard-step-screen.active {
+  animation: wizardStepEnter 220ms ease;
+}
+
+body.theme-windows-wizard-setup .wizard-step-header h3 {
+  margin: 4px 0 8px;
+  font-size: 30px;
+  color: #1e3752;
+}
+
+body.theme-windows-wizard-setup .wizard-step-header p,
+body.theme-windows-wizard-setup .wizard-choice-meta,
+body.theme-windows-wizard-setup .wizard-info-card p,
+body.theme-windows-wizard-setup .setup-choice-copy,
+body.theme-windows-wizard-setup .wizard-radio-card span span {
+  color: #5f7892;
+}
+
+body.theme-windows-wizard-setup .wizard-step-kicker {
+  color: #587493;
+}
+
+body.theme-windows-wizard-setup .wizard-summary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.theme-windows-wizard-setup .wizard-summary-card,
+body.theme-windows-wizard-setup .wizard-info-card {
+  border-radius: 0;
+  border: 1px solid #b0c0d4;
+  background: linear-gradient(180deg, #ffffff, #f3f6fb);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+body.theme-windows-wizard-setup .setup-panel-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+body.theme-windows-wizard-setup .setup-choice-card,
+body.theme-windows-wizard-setup .wizard-radio-card {
+  border-radius: 0;
+  border: 1px solid #aebfd4;
+  background: linear-gradient(180deg, #ffffff, #f2f6fb);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+body.theme-windows-wizard-setup .setup-choice-card:hover,
+body.theme-windows-wizard-setup .setup-choice-card:focus-visible,
+body.theme-windows-wizard-setup .wizard-radio-card:hover,
+body.theme-windows-wizard-setup .wizard-radio-card:focus-within {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 10px 20px rgba(67, 93, 125, 0.12);
+}
+
+body.theme-windows-wizard-setup .wizard-choice-selected {
+  border-color: #5882b6;
+  background: linear-gradient(180deg, #ffffff, #e8f0fb);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 0 1px #8da9c8;
+}
+
+body.theme-windows-wizard-setup .setup-footer {
+  padding: 14px 18px;
+  border-top: 1px solid #b4c4d8;
+  background: linear-gradient(180deg, #f9fbfe, #e6edf7);
+  justify-content: flex-end;
+}
+
+body.theme-windows-wizard-setup .setup-footer-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+body.theme-windows-wizard-setup .setup-footer-actions .primary-button,
+body.theme-windows-wizard-setup .setup-footer-actions .secondary-button,
+body.theme-windows-wizard-setup .setup-footer-actions .ghost-button {
+  min-width: 88px;
+  min-height: 32px;
+  border-radius: 3px;
+  padding: 6px 14px;
+}
+
+body.theme-windows-wizard-setup .setup-footer-actions .primary-button {
+  background: linear-gradient(180deg, #4fa4f0, #166fba);
+}
+
+body.theme-windows-wizard-setup .setup-footer-actions .secondary-button,
+body.theme-windows-wizard-setup .setup-footer-actions .ghost-button {
+  background: linear-gradient(180deg, #ffffff, #dce6f2);
+  color: #21384d;
+  border: 1px solid #8ea7c3;
+}
+
+@media (max-width: 980px) {
+  .shell { grid-template-columns: 1fr; }
+  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+  .hero-card,
+  .dashboard-grid,
+  .builder-grid,
+  .responses-grid,
+  .stats-row,
+  .setup-window,
+  .setup-panel-grid { grid-template-columns: 1fr; }
+  .launcher-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .launcher-tile,
+  .launcher-tile-wide { grid-column: span 1; min-height: 150px; }
+  .setup-footer { flex-direction: column; align-items: stretch; }
+  .setup-footer-actions { justify-content: stretch; }
+  .setup-footer-actions > * { flex: 1; }
+  .wizard-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wizard-step-header h3 { font-size: 28px; }
+  .console-home-screen { padding: 24px 18px 148px; }
+  .console-header { grid-template-columns: 1fr; display: grid; }
+  .console-status-cluster { justify-content: start; }
+  .console-sidecard { justify-self: stretch; width: 100%; }
+  .console-dock {
+    width: calc(100vw - 22px);
+    padding: 10px 12px;
+    gap: 8px;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .console-dock-item { min-width: 92px; }
+  .console-statusbar { grid-template-columns: 1fr; text-align: center; }
+  .console-statusbar-right,
+  .console-statusbar-center { text-align: center; }
+  .graph-row { grid-template-columns: 1fr; }
+  .public-home-section-header { align-items: stretch; }
+
+  body.theme-wii-u-menu .launcher-grid {
+    grid-template-columns: repeat(3, 168px);
+    grid-auto-rows: 168px;
+  }
+
+  body.theme-windows-wizard-setup .setup-window {
+    grid-template-columns: 210px 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  body.theme-windows-wizard-setup .setup-footer {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  body.theme-windows-wizard-setup .setup-footer-actions {
+    justify-content: flex-end;
+  }
+
+  body.theme-windows-wizard-setup .setup-footer-actions > * {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .launcher-grid { grid-template-columns: 1fr; }
+  .setup-body { padding: 18px; }
+  .setup-sidebar { padding: 18px 14px; }
+  .wizard-summary-grid { grid-template-columns: 1fr; }
+  .console-home-screen { padding-inline: 12px; }
+
+  body.theme-wii-u-menu .launcher-grid {
+    grid-template-columns: repeat(2, minmax(140px, 160px));
+    grid-auto-rows: 160px;
+    gap: 16px;
+  }
+
+  body.theme-wii-u-menu .console-dock {
+    gap: 6px;
+    padding: 10px 12px;
+  }
+
+  body.theme-wii-u-menu .console-dock-item {
+    min-width: 70px;
+  }
+
+  body.theme-windows-wizard-setup .setup-window {
+    width: calc(100vw - 18px);
+    height: calc(100vh - 24px);
+    grid-template-columns: 188px 1fr;
+  }
+
+  body.theme-windows-wizard-setup .setup-titlebar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
