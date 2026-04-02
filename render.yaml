@@ -7,17 +7,11 @@ services:
     repo: https://github.com/hoodlandon25/forms-discord
     branch: main
     buildCommand: "true"
-    startCommand: python3 server.py --root . --data-dir /var/data
+    startCommand: python3 server.py --root .
     healthCheckPath: /
-    disk:
-      name: discord-forms-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: HOST
         value: 0.0.0.0
-      - key: DATA_DIR
-        value: /var/data
       - key: ADMIN_USERNAME
         sync: false
       - key: ADMIN_PASSWORD
