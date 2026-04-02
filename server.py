@@ -1187,6 +1187,10 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
         platform_label = payload.get("platform_label", "").strip() or "Unknown"
         username = payload.get("username", "").strip() or "Unknown"
 
+        if not SUBMISSION_WEBHOOK_URL:
+            self.send_json({"ok": True, "skipped": True, "reason": "submission_webhook_not_configured"})
+            return
+
         webhook_payload = {
             "content": "New form submission",
             "embeds": [
@@ -1235,6 +1239,10 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
 
         if decision == "rejected" and not reason:
             self.send_json({"ok": False, "error": "Reject reason is required."}, HTTPStatus.BAD_REQUEST)
+            return
+
+        if not DECISION_WEBHOOK_URL:
+            self.send_json({"ok": True, "skipped": True, "reason": "decision_webhook_not_configured"})
             return
 
         status_text = "APPROVED" if decision == "approved" else "REJECTED"
