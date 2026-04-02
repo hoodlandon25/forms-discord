@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: discord-forms
+    runtime: python
+    plan: free
+    region: oregon
+    repo: https://github.com/hoodlandon25/forms-discord
+    branch: main
+    buildCommand: "true"
+    startCommand: python3 server.py --root . --data-dir /var/data
+    healthCheckPath: /
+    disk:
+      name: discord-forms-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATA_DIR
+        value: /var/data
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: RESET_CODE
+        sync: false
+      - key: ACCOUNT_CREATE_CODE
+        sync: false
+      - key: RESET_WEBHOOK_URL
+        sync: false
+      - key: SUBMISSION_WEBHOOK_URL
+        sync: false
+      - key: DECISION_WEBHOOK_URL
+        sync: false
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_REDIRECT_URI
+        sync: false

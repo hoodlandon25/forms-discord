@@ -119,11 +119,13 @@ def password_hash(password: str) -> str:
 
 
 class DiscordFormsHandler(SimpleHTTPRequestHandler):
-    def __init__(self, *args, directory: str, **kwargs):
+    def __init__(self, *args, directory: str, data_directory: str | None = None, **kwargs):
         self.root = Path(directory)
-        self.auth_file = self.root / ".admin_auth.json"
-        self.site_data_file = self.root / ".site_data.json"
-        self.security_file = self.root / ".security_data.json"
+        self.data_root = Path(data_directory).resolve() if data_directory else self.root
+        self.data_root.mkdir(parents=True, exist_ok=True)
+        self.auth_file = self.data_root / ".admin_auth.json"
+        self.site_data_file = self.data_root / ".site_data.json"
+        self.security_file = self.data_root / ".security_data.json"
         self.ensure_auth_file()
         self.ensure_site_data_file()
         self.ensure_security_file()
@@ -1332,15 +1334,17 @@ def parse_args():
     parser.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))
     parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8134")))
     parser.add_argument("--root", required=True)
+    parser.add_argument("--data-dir", default=os.environ.get("DATA_DIR", ""))
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     root = Path(args.root).resolve()
+    data_dir = Path(args.data_dir).resolve() if args.data_dir else root
 
     def handler(*handler_args, **handler_kwargs):
-        return DiscordFormsHandler(*handler_args, directory=str(root), **handler_kwargs)
+        return DiscordFormsHandler(*handler_args, directory=str(root), data_directory=str(data_dir), **handler_kwargs)
 
     server = ThreadingHTTPServer((args.host, args.port), handler)
     server.serve_forever()

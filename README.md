@@ -51,11 +51,12 @@ cd /home/hoodlandon25/discord_forms_local
 2. Create a separate live server folder or remote host that will run the same project files.
 3. Put your real secrets only on the live server in its own `.env`:
    `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `RESET_CODE`, `ACCOUNT_CREATE_CODE`, `RESET_WEBHOOK_URL`, `SUBMISSION_WEBHOOK_URL`, `DECISION_WEBHOOK_URL`, `DISCORD_CLIENT_SECRET`.
-4. Configure this local project for one-click publishing:
+4. For production hosts with persistent storage, set `DATA_DIR` to that mounted disk path so forms, admin accounts, and moderation data survive redeploys.
+5. Configure this local project for one-click publishing:
    - Local target: set `DEPLOY_LOCAL_DIR=/path/to/live/server/folder`
    - Remote target: set `DEPLOY_METHOD=rsync`, `DEPLOY_HOST`, `DEPLOY_PATH`, and optionally `DEPLOY_USER` / `DEPLOY_SSH_PORT`
-5. Start the live server separately on the production machine using the same app files and its own `.env`.
-6. Use the in-app `Update Live Website` button or `/home/hoodlandon25/forms_site.sh deploy` to push code changes from local to live.
+6. Start the live server separately on the production machine using the same app files and its own `.env`.
+7. Use the in-app `Update Live Website` button or `/home/hoodlandon25/forms_site.sh deploy` to push code changes from local to live.
 
 The browser never receives the secret values. The admin UI now only shows safe deploy status such as configured method, target summary, and whether each secret-backed feature is ready.
 
