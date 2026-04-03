@@ -41,6 +41,7 @@ cd /home/hoodlandon25/discord_forms_local
 
 ## Deploy Setup
 
+- Render + GitHub flow: set `GITHUB_PUSH_TOKEN`, optionally `GITHUB_DEPLOY_REPO_URL`, `GITHUB_DEPLOY_BRANCH`, and `RENDER_PUBLIC_URL`. Then use the in-app `Update Live Website` button to auto-commit local changes, push to GitHub, and let Render auto-deploy.
 - `DEPLOY_METHOD=local-copy` with `DEPLOY_LOCAL_DIR=/path/to/live/site` copies this folder to another local directory.
 - `DEPLOY_METHOD=rsync` with `DEPLOY_HOST` and `DEPLOY_PATH` syncs this folder to a remote server over SSH.
 - `deploy_website.sh` excludes local secrets and runtime files like `.env`, auth data, PID files, and logs, while still publishing your saved forms.

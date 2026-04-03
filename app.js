@@ -1432,8 +1432,8 @@ function renderDashboard() {
       <div class="hero-card">
         <div class="hero-copy">
           <span class="hero-chip">Website + Builder</span>
-          <h3>Run your forms site here, then push these files to the live website when you are ready.</h3>
-          <p>Your working website files stay on this computer. Use the live update button after editing the local files, or run the watcher script to auto-sync them.</p>
+          <h3>Run your forms site here, then push this project to GitHub and let Render redeploy it.</h3>
+          <p>Your working website files stay on this computer. Use the live update button after editing locally, and this project will push the latest commit to the GitHub repo used by Render.</p>
           <div class="builder-actions">
             <button class="primary-button" data-action="new-form">Create Another Form</button>
             <button class="secondary-button" data-action="deploy-live">${state.deploying ? "Updating..." : "Update Live Website"}</button>
@@ -1466,7 +1466,7 @@ function renderDashboard() {
             </div>
             <div class="section-copy">${escapeHtml(deployStatus.target_summary || "Not configured")}</div>
             <div class="builder-actions">
-              ${deployStatusPill("Deploy Script", deployStatus.script_exists)}
+              ${deployStatusPill("Git Push Ready", Boolean(deployStatus.git_push_ready))}
               ${deployStatusPill("Submission Webhook", Boolean(deployStatus.webhooks?.submission))}
               ${deployStatusPill("Decision Webhook", Boolean(deployStatus.webhooks?.decision))}
               ${deployStatusPill("Reset Webhook", Boolean(deployStatus.webhooks?.reset))}
@@ -1489,9 +1489,9 @@ function renderDashboard() {
       </div>
       <div class="card">
         <h3 class="section-title">Live Website Setup</h3>
-        <p class="section-copy">Keep all passwords, codes, webhook URLs, and OAuth secrets in the server-only <code>.env</code>. They stay off the browser and are excluded from deploy copies by <code>deploy_website.sh</code>.</p>
+        <p class="section-copy">Keep all passwords, codes, webhook URLs, OAuth secrets, and GitHub push credentials in the server-only <code>.env</code>. They stay off the browser.</p>
         <p class="section-copy">Current target: ${escapeHtml(deployStatus.target_summary || "Not configured")}<br>Method: ${escapeHtml(deployStatus.method || "not-configured")}</p>
-        <p class="section-copy">To publish this as a real site, set either <code>DEPLOY_LOCAL_DIR</code> or <code>DEPLOY_HOST</code> plus <code>DEPLOY_PATH</code>. Then edit locally and press <strong>Update Live Website</strong>.</p>
+        <p class="section-copy">For this Render setup, edit locally and press <strong>Update Live Website</strong> to commit and push this project to GitHub. Render will then redeploy automatically.</p>
       </div>
       ${themeSelectorCard}
       <div class="card">
@@ -2034,7 +2034,7 @@ async function renderControlPanel() {
               <div>Target: ${escapeHtml(deployStatus.target_summary || "Not configured")}</div>
               <div>Method: ${escapeHtml(deployStatus.method || "not-configured")}</div>
               <div class="builder-actions" style="margin-top:12px">
-                ${deployStatusPill("Deploy Script", deployStatus.script_exists)}
+                ${deployStatusPill("Git Push Ready", Boolean(deployStatus.git_push_ready))}
                 ${deployStatusPill("Submission Webhook", Boolean(deployStatus.webhooks?.submission))}
                 ${deployStatusPill("Decision Webhook", Boolean(deployStatus.webhooks?.decision))}
                 ${deployStatusPill("Reset Webhook", Boolean(deployStatus.webhooks?.reset))}

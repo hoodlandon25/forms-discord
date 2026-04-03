@@ -750,6 +750,10 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
         )
 
     def deploy_config_status(self) -> dict:
+        github_push_token = os.environ.get("GITHUB_PUSH_TOKEN", "").strip()
+        github_deploy_repo_url = self.git_deploy_repo_url()
+        github_deploy_branch = self.git_deploy_branch()
+        render_public_url = os.environ.get("RENDER_PUBLIC_URL", "").strip()
         deploy_method = os.environ.get("DEPLOY_METHOD", "").strip()
         deploy_local_dir = os.environ.get("DEPLOY_LOCAL_DIR", "").strip()
         deploy_user = os.environ.get("DEPLOY_USER", "").strip()
@@ -758,7 +762,9 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
         deploy_ssh_port = os.environ.get("DEPLOY_SSH_PORT", "22").strip() or "22"
 
         inferred_method = deploy_method
-        if not inferred_method:
+        if github_push_token and github_deploy_repo_url:
+            inferred_method = "github-render"
+        elif not inferred_method:
             if deploy_local_dir:
                 inferred_method = "local-copy"
             elif deploy_host and deploy_path:
@@ -767,7 +773,11 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
         configured = False
         target_summary = "Not configured"
 
-        if inferred_method == "local-copy" and deploy_local_dir:
+        if inferred_method == "github-render" and github_push_token and github_deploy_repo_url:
+            configured = True
+            render_target = f" -> {render_public_url}" if render_public_url else ""
+            target_summary = f"GitHub push: {github_deploy_repo_url} ({github_deploy_branch}){render_target}"
+        elif inferred_method == "local-copy" and deploy_local_dir:
             configured = True
             target_summary = f"Local directory: {deploy_local_dir}"
         elif inferred_method == "rsync" and deploy_host and deploy_path:
@@ -780,6 +790,7 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
             "method": inferred_method or "not-configured",
             "target_summary": target_summary,
             "script_exists": (self.root / "deploy_website.sh").exists(),
+            "git_push_ready": bool(github_push_token and github_deploy_repo_url),
             "webhooks": {
                 "reset": bool(RESET_WEBHOOK_URL),
                 "submission": bool(SUBMISSION_WEBHOOK_URL),
@@ -788,6 +799,113 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
             "discord_oauth": {
                 "configured": self.discord_auth_configured(),
             },
+        }
+
+    def run_command(self, args: list[str], *, timeout: int = 300) -> subprocess.CompletedProcess:
+        return subprocess.run(
+            args,
+            cwd=str(self.root),
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            check=False,
+        )
+
+    def git_command_output(self, args: list[str]) -> str:
+        result = self.run_command(args, timeout=30)
+        if result.returncode != 0:
+            return ""
+        return (result.stdout or "").strip()
+
+    def git_deploy_repo_url(self) -> str:
+        return os.environ.get("GITHUB_DEPLOY_REPO_URL", "").strip() or self.git_command_output(
+            ["git", "config", "--get", "remote.origin.url"]
+        )
+
+    def git_deploy_branch(self) -> str:
+        return os.environ.get("GITHUB_DEPLOY_BRANCH", "").strip() or self.git_command_output(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"]
+        ) or "main"
+
+    def redacted_output(self, text: str, secret: str) -> str:
+        if not secret:
+            return text
+        return text.replace(secret, "[REDACTED]")
+
+    def github_authenticated_repo_url(self, repo_url: str, token: str) -> str:
+        if repo_url.startswith("https://github.com/"):
+            prefix = "https://github.com/"
+            return f"https://x-access-token:{urllib.parse.quote(token, safe='')}@github.com/{repo_url[len(prefix):]}"
+        return repo_url
+
+    def handle_github_render_deploy(self):
+        github_push_token = os.environ.get("GITHUB_PUSH_TOKEN", "").strip()
+        github_deploy_repo_url = self.git_deploy_repo_url()
+        github_deploy_branch = self.git_deploy_branch()
+
+        if not github_push_token or not github_deploy_repo_url:
+            return {
+                "ok": False,
+                "status": "failed",
+                "exit_code": 1,
+                "stdout": "",
+                "stderr": "",
+                "error": "GitHub/Render deploy is not configured. Set GITHUB_PUSH_TOKEN and make sure the repo remote exists.",
+            }
+
+        status_result = self.run_command(["git", "status", "--porcelain"])
+        if status_result.returncode != 0:
+            return {
+                "ok": False,
+                "status": "failed",
+                "exit_code": status_result.returncode,
+                "stdout": self.redacted_output(status_result.stdout or "", github_push_token),
+                "stderr": self.redacted_output(status_result.stderr or "", github_push_token),
+                "error": "Could not read git status.",
+            }
+
+        if (status_result.stdout or "").strip():
+            add_result = self.run_command(["git", "add", "-A"])
+            if add_result.returncode != 0:
+                return {
+                    "ok": False,
+                    "status": "failed",
+                    "exit_code": add_result.returncode,
+                    "stdout": self.redacted_output(add_result.stdout or "", github_push_token),
+                    "stderr": self.redacted_output(add_result.stderr or "", github_push_token),
+                    "error": "Could not stage website changes for deploy.",
+                }
+            commit_message = f"Auto deploy website {time.strftime('%Y-%m-%d %H:%M:%S')}"
+            commit_result = self.run_command(["git", "commit", "-m", commit_message], timeout=60)
+            if commit_result.returncode != 0:
+                combined = f"{commit_result.stdout or ''}\n{commit_result.stderr or ''}".lower()
+                if "nothing to commit" not in combined:
+                    return {
+                        "ok": False,
+                        "status": "failed",
+                        "exit_code": commit_result.returncode,
+                        "stdout": self.redacted_output(commit_result.stdout or "", github_push_token),
+                        "stderr": self.redacted_output(commit_result.stderr or "", github_push_token),
+                        "error": "Could not commit website changes for deploy.",
+                    }
+
+        push_result = self.run_command(
+            ["git", "push", self.github_authenticated_repo_url(github_deploy_repo_url, github_push_token), github_deploy_branch],
+            timeout=300,
+        )
+        stdout = self.redacted_output(push_result.stdout or "", github_push_token).strip()
+        stderr = self.redacted_output(push_result.stderr or "", github_push_token).strip()
+        success = push_result.returncode == 0
+        if success:
+            extra_line = "Pushed to GitHub. Render should auto-deploy the new commit."
+            stdout = f"{stdout}\n{extra_line}".strip()
+        return {
+            "ok": success,
+            "status": "success" if success else "failed",
+            "exit_code": push_result.returncode,
+            "stdout": stdout,
+            "stderr": stderr,
+            "error": "" if success else "GitHub push failed.",
         }
 
     def handle_admin_deploy_status(self):
@@ -848,50 +966,42 @@ class DiscordFormsHandler(SimpleHTTPRequestHandler):
             self.send_json({"ok": False, "error": "Admin login required."}, HTTPStatus.UNAUTHORIZED)
             return
 
-        script_path = self.root / "deploy_website.sh"
-        if not script_path.exists():
-            self.send_json({"ok": False, "error": "Deploy script is missing."}, HTTPStatus.NOT_FOUND)
-            return
+        if os.environ.get("GITHUB_PUSH_TOKEN", "").strip() and self.git_deploy_repo_url():
+            deploy_result = self.handle_github_render_deploy()
+        else:
+            script_path = self.root / "deploy_website.sh"
+            if not script_path.exists():
+                self.send_json({"ok": False, "error": "Deploy script is missing."}, HTTPStatus.NOT_FOUND)
+                return
 
-        result = subprocess.run(
-            [str(script_path)],
-            cwd=str(self.root),
-            capture_output=True,
-            text=True,
-            timeout=300,
-            check=False,
-        )
-        stdout = (result.stdout or "").strip()
-        stderr = (result.stderr or "").strip()
+            result = self.run_command([str(script_path)], timeout=300)
+            deploy_result = {
+                "ok": result.returncode == 0,
+                "status": "success" if result.returncode == 0 else "failed",
+                "exit_code": result.returncode,
+                "stdout": (result.stdout or "").strip(),
+                "stderr": (result.stderr or "").strip(),
+                "error": "" if result.returncode == 0 else "Website deploy failed.",
+            }
 
         security = self.load_security()
         security.setdefault("deployments", [])
         security["deployments"].append(
             {
                 "timestamp": int(time.time() * 1000),
-                "status": "success" if result.returncode == 0 else "failed",
-                "exit_code": result.returncode,
-                "stdout": stdout[-4000:],
-                "stderr": stderr[-4000:],
+                "status": deploy_result["status"],
+                "exit_code": deploy_result["exit_code"],
+                "stdout": deploy_result["stdout"][-4000:],
+                "stderr": deploy_result["stderr"][-4000:],
                 "ran_by": self.current_actor_name(),
             }
         )
         security["deployments"] = security["deployments"][-100:]
         self.save_security(security)
-        self.record_activity(category="admin", action="deploy_site", detail={"exit_code": result.returncode})
+        self.record_activity(category="admin", action="deploy_site", detail={"exit_code": deploy_result["exit_code"]})
 
-        status = HTTPStatus.OK if result.returncode == 0 else HTTPStatus.BAD_GATEWAY
-        self.send_json(
-            {
-                "ok": result.returncode == 0,
-                "status": "success" if result.returncode == 0 else "failed",
-                "exit_code": result.returncode,
-                "stdout": stdout,
-                "stderr": stderr,
-                "error": "" if result.returncode == 0 else "Website deploy failed.",
-            },
-            status,
-        )
+        status = HTTPStatus.OK if deploy_result["ok"] else HTTPStatus.BAD_GATEWAY
+        self.send_json(deploy_result, status)
 
     def handle_discord_auth_status(self):
         user = self.discord_user()
